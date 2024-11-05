@@ -14,7 +14,7 @@ public abstract class Funcionario {
 	public abstract double getBonificacao();
 	
 		public void aumento(double valor) {
-	       this.salario += (this.salario*0.05);
+	       this.salario += salario*valor;
 	    }
 
 	    // Métodos getters para acessar os atributos
