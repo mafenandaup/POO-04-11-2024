@@ -11,7 +11,7 @@ public class Gerente extends Funcionario{
 
 	@Override
 	public String toString() {
-		return "GERENTE: nome:" +this.nome+ ". SALÁRIO: " +this.salario+ ". PESSOAS GERENCIADAS:" +pessoas_gerenciadas;
+		return "GERENTE: nome:" +this.nome+ ". SALÁRIO: " +this.salario+ ".BONIFICAÇÃO: "+getBonificacao()+". PESSOAS GERENCIADAS:" +pessoas_gerenciadas;
 	}
 
 	@Override
