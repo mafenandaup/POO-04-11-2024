@@ -14,6 +14,7 @@ public class Gerente extends Funcionario{
 		return "GERENTE: nome:" +this.nome+ ". SALÁRIO: " +this.salario+ ".BONIFICAÇÃO: "+getBonificacao()+". PESSOAS GERENCIADAS:" +pessoas_gerenciadas;
 	}
 
+
 	@Override
 	public double getBonificacao() {
 		return this.salario*0.20;
