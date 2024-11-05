@@ -11,10 +11,10 @@ public abstract class Funcionario {
 	}
 	
 	public abstract String toString();
-	public abstract void getBonificacao();
+	public abstract double getBonificacao();
 	
 		public void aumento(double valor) {
-	        this.salario += valor;
+	       this.salario += (this.salario*0.05);
 	    }
 
 	    // Métodos getters para acessar os atributos
