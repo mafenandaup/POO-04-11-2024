@@ -1,16 +1,17 @@
 package paymentsyst;
 
 public class Terceirizado extends Trabalhador{
+	
+	protected int horasextra;
 
-	public Terceirizado(String nome, double salario) {
+	public Terceirizado(String nome, double salario, int horasextra) {
 		super(nome, salario);
-		// TODO Auto-generated constructor stub
+		this.horasextra = horasextra;
 	}
 
 	@Override
 	public double calcPayment() {
-		// TODO Auto-generated method stub
-		return 0;
+		return salario + ((0.1 *salario) * horasextra);
 	}
 
 }
