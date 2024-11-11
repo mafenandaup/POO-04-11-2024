@@ -4,8 +4,8 @@ public class SeguroDeVida implements Tributavel {
 	
 	protected double valorSegurado;
 	
-	public void SeguroDeVuda(double vlr) {
-		this.valorSegurado = vlr;
+	public SeguroDeVida(double valorSegurado) {
+		this.valorSegurado = valorSegurado;
 	}
 
 	@Override
