@@ -6,17 +6,13 @@ public class Conta {
 	
 	Scanner sc = new Scanner(System.in);
 	protected double saldo;
-	protected String nome;
-	protected String accnum;
 
 
-	public Conta(double saldo, String nome,String accnum) {
+	public Conta(double saldo) {
 		this.saldo = saldo;
-		this.nome = nome;
-		this.accnum = accnum;
 	}
 	public  String toString() {
-		return this.nome + " (nome); " + this.saldo+ " (saldo); " +this.accnum+ " (numero serial da conta).";
+		return this.saldo+ " (saldo); " ;
 		
 	}
 	public double Deposito(double saldo) {
