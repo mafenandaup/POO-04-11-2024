@@ -1,5 +1,10 @@
 package pooreview;
 
-public class SeguroDeVida {
+public class SeguroDeVida implements Tributavel {
+
+	@Override
+	public double calculaTributos() {
+		return 42.0;
+	}
 
 }
