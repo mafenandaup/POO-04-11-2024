@@ -10,5 +10,8 @@ public abstract class Trabalhador {
 	}
 	
 	public abstract double calcPayment();
-
+	
+	public String getNome() {
+		return nome;
+	}
 }
