@@ -10,5 +10,10 @@ public class Funcionario extends Trabalhador{
 	public double calcPayment() {
 		return salario;
 	}
+	
+	public String toString(){
+		return ("NOME; " +nome+ ". SALARIO; R$"+salario);
+		
+	}
 
 }
