@@ -13,6 +13,10 @@ public class ContaApp {
 		System.out.println("TRIBUTOS CONTA CORRENTE (R$): " + contac.calculaTributos());
 		System.out.println("TRIBUTOS SEGURO DE VIDA (R$): " + segvida.calculaTributos());
 
+		ManageImpostosRenda manager = new ManageImpostosRenda();
+		manager.Add(contac);
+		manager.Add(segvida);
+		System.out.println("TOTAL DE TRIBUTOS; " + manager.getTotal());
 	}
 
 }
