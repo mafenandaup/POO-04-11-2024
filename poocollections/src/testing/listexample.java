@@ -1,6 +1,7 @@
 package testing;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,7 +22,20 @@ public class listexample {
 			// nome = lista.get(i); não funcionaria
 			System.out.println(nome);
 		}
-
+		System.out.println(" ");
+		System.out.println("*ORDENADO");
+		System.out.println(" ");
+		
+		//ORDENAÇÃO COM LISTAS 
+		//A classe Collections fornece um método estático sort , que recebe um List como argumento e o
+		//ordena por ordem crescente.
+		
+		Collections.sort(lista);
+		for(int i=0; i < lista.size(); i++) {
+		nome = (String) lista.get(i);
+		System.out.println(nome);
+		}
+		
 		// EXEMPLO COM SET (SAÍDA NÃO TEM ORDEM GARANTIDA)
 		Set<String> conjunto = new HashSet<>(); // não precisa fazer casting pq já define como string no inicio, com
 												// generics
@@ -35,3 +49,4 @@ public class listexample {
 		// mas pode ser preservada em outras implementações de Set, como LinkedHashSet.
 	}
 }
+
