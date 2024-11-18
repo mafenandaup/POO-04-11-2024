@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Scanner;
 import java.util.Set;
 
 public class listexample {
@@ -83,5 +84,20 @@ public class listexample {
 				.forEach(System.out::println);
 
 	}
+	
+//	public static void CarsPerPrice(Scanner sc) {
+//		System.out.print("Informe o preço máximo que você pode gastar: ");
+//		double precoMaximo = sc.nextDouble();
+//
+//		System.out.println("Carros com preço igual ou menor que " + precoMaximo + ":");
+//		listaDeCarros.stream().filter(carro -> carro.getPreco() <= precoMaximo)
+//				// Filtra carros com preço <= precoMaximo ou seja: os unicos que permanecem no
+//				// stream são os carros que tem o preço menor que o preço máx.
+//				.map(carro -> "Nome: " + carro.getMarca() + ", Preço: " + carro.getPreco()) // Transformar em string
+//																							// formatada
+//				.forEach(System.out::println); // Imprime os carros filtrados
+//		System.out.println("Preço Máximo para gastar: " +precoMaximo);
+//
+//	} aqui é só p não perder como usar o "filter"
 
 }
