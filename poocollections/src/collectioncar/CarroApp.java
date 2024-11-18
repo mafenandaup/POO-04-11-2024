@@ -6,74 +6,115 @@ import java.util.Scanner;
 
 public class CarroApp {
 
-	private static final List<Carro> listaDeCarros = new ArrayList<>();
+    private static final List<Carro> listaDeCarros = new ArrayList<>(); // lista de carros
 
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-		int opc = 0;
+        double preco;
+        String marca, cor;
+        int ano;
+        int opc = 0;
 
-		while (opc != 5) {
-			System.out.println("\nMENU:");
-			System.out.println("1. Inserir carro");
-			System.out.println("2. Listar carros por preço");
-			System.out.println("3. Listar carros por marca");
-			System.out.println("4. Buscar carro");
-			System.out.println("5. Sair");
-			System.out.print("Escolha uma opção: ");
-			opc = sc.nextInt();
+        while (opc != 5) {
+            System.out.println("\nMENU:");
+            System.out.println("1. Inserir carro");
+            System.out.println("2. Listar carros por preço");
+            System.out.println("3. Listar carros por marca");
+            System.out.println("4. Buscar carro");
+            System.out.println("5. Sair");
+            System.out.print("Escolha uma opção: ");
+            opc = sc.nextInt();
+            sc.nextLine(); 
 
-			if (opc > 5 || opc < 1) {
-				System.out.println("Por favor, insira uma opção válida.");
-			} else if (opc == 1) {
-				insertCar(sc);
-			} else if (opc == 2) {
-				CarsPerPrice(sc);
-			}else if (opc == 3) {
-				CarsPerBrand(sc);
-			}else if (opc == 4) {
-				SearchForCar(sc);
-			}
-		}
-	}
+            switch (opc) {
+                case 1:
+                    insertCar(sc);
+                    break;
+                case 2:
+                    System.out.print("Preço: ");
+                    preco = sc.nextDouble();
+                    sc.nextLine(); 
+                    carsPerPrice(preco);
+                    break;
+                case 3:
+                    System.out.print("Marca: ");
+                    marca = sc.nextLine();
+                    carsPerBrand(marca);
+                    break;
+                case 4:
+                    System.out.print("Marca: ");
+                    marca = sc.nextLine();
+                    System.out.print("Ano: ");
+                    ano = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Cor: ");
+                    cor = sc.nextLine();
+                    searchForCar(marca, ano, cor);
+                    break;
+                case 5:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        }
+        sc.close(); 
+    }
 
-	private static void insertCar(Scanner sc) {
-		System.out.print("Marca: ");
-		String marca = sc.nextLine();
+    public static void insertCar(Scanner sc) {
+        System.out.print("Marca: ");
+        String marca = sc.nextLine();
 
-		System.out.print("Ano: "); // nesse métodos, ele escaneia cada um dos atributos.
-		int ano = sc.nextInt();
+        System.out.print("Ano: ");
+        int ano = sc.nextInt();
+        sc.nextLine(); 
+        
+        System.out.print("Cor: ");
+        String cor = sc.nextLine();
 
-		System.out.print("Cor: ");
-		String cor = sc.nextLine();
+        System.out.print("Preço: ");
+        double preco = sc.nextDouble();
+        sc.nextLine(); 
 
-		System.out.print("Preço: ");
-		double preco = sc.nextDouble();
+        Carro c = new Carro(marca, ano, cor, preco); // Criar novo carro
+        listaDeCarros.add(c); // Adicionar à lista
+        System.out.println("Carro inserido com sucesso!");
+    }
 
-		listaDeCarros.add(new Carro(marca, ano, cor, preco)); // aqui você adiciona um novo elemento a lista, com cada
-																// atributo pertencente à classe carro.
-		System.out.println("Carro inserido com sucesso!");
-	}
+    public static void carsPerPrice(double preco) {
+        boolean encontrado = false;
+        for (Carro carro : listaDeCarros) {
+            if (carro.getPreco() <= preco) {
+                System.out.println(carro);
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("Nenhum carro encontrado com preço igual ou menor que " + preco);
+        }
+    }
 
-	private static void  CarsPerPrice(Scanner sc) {
-		System.out.print("Informe o preço máximo que você pode gastar: ");
-		double precoMaximo = sc.nextDouble();
+    public static void carsPerBrand(String marca) {
+        boolean encontrado = false;
+        for (Carro carro : listaDeCarros) {
+            if (carro.getMarca().equalsIgnoreCase(marca)) {
+                System.out.println(carro);
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("Nenhum carro encontrado da marca " + marca);
+        }
+    }
 
-		System.out.println("Carros com preço igual ou menor que " + precoMaximo + ":");
-		listaDeCarros.stream().filter(carro -> carro.getPreco() <= precoMaximo)
-				// Filtra carros com preço <= precoMaximo ou seja: os unicos que permanecem no
-				// stream são os carros que tem o preço menor que o preço máx.
-				.map(carro -> "Nome: " + carro.getMarca() + ", Preço: " + carro.getPreco()) // Transformar em string  formatada
-				.forEach(System.out::println); // Imprime os carros filtrados
-
-	}
-	
-	private static void CarsPerBrand(Scanner sc) {
-		
-	}
-	
-	private static void SearchForCar(Scanner sc) {
-		
-	}
-
+    public static void searchForCar(String marca, int ano, String cor) {
+        for (Carro carro : listaDeCarros) {
+            if (carro.getMarca().equalsIgnoreCase(marca) && carro.getAno() == ano && carro.getCor().equalsIgnoreCase(cor)) {
+                System.out.println("Carro encontrado: " + carro);
+                return;
+            }
+        }
+        System.out.println("Nenhum carro encontrado com as características especificadas.");
+    }
 }
