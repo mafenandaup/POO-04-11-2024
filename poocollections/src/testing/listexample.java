@@ -73,6 +73,15 @@ public class listexample {
 		System.out.println("Fila: " + fila);
 		System.out.println("Elemento removido: " + fila.poll()); // Remove o primeiro elemento add na fila
 		System.out.println("Fila atualizada: " + fila);
+
+		// COMO USAR O STREAM (LISTA DE ELEENTOS EDITAVEIS)
+		List<Integer> numeros = List.of(1, 2, 3, 4, 5);
+		numeros.stream().forEach(System.out::println);
+
+// agora utilizando o filter: 
+		numeros.stream().filter(n -> n % 2 == 0) // Apenas números pares
+				.forEach(System.out::println);
+
 	}
 
 }
