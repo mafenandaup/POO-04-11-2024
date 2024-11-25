@@ -2,8 +2,8 @@ package clothingstore;
 
 public abstract class Peca {
 
-	private String descricao;
-	private int quantidade; 
+	protected String descricao;
+	protected int quantidade; 
 	private int estoque_min;
 	private int estoque_max;
 	
@@ -47,12 +47,6 @@ public abstract class Peca {
 	}
 	public int getQuantidade() {
 		return quantidade;
-	}
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-}
-
 	}
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
