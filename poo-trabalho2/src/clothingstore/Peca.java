@@ -6,6 +6,8 @@ public abstract class Peca {
 	protected int quantidade; 
 	protected int estoque_min;
 	protected int estoque_max;
+	 
+	// atributos e construtor
 	
 	public Peca(String descricao, int quantidade, int estoque_min, int estoque_max) {
 		this.descricao = descricao;
@@ -14,11 +16,11 @@ public abstract class Peca {
 		this.estoque_min = estoque_min;
 	}
 	
-	public abstract void Venda();
+	public abstract void Venda(); // método abstrato venda a ser implementado pelas outras classes
 	
 	
 	   public void reposicaoEstoque() {
-	        if (quantidade < estoque_min) {
+	        if (quantidade < estoque_min) { //se a quantia for menor que o estoque mínimo, ela se repõe e se torna a quantia máxima de estoque.
 	            quantidade = estoque_max;
 	            System.out.println(descricao + ": Estoque foi reposto ao máximo.");
 	        } else {
@@ -34,3 +36,4 @@ public abstract class Peca {
 		return quantidade;
 	}
 }
+
