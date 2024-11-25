@@ -1,6 +1,6 @@
 package clothingstore;
 
-public class Peca {
+public abstract class Peca {
 
 	private String descricao;
 	private int quantidade; 
@@ -10,6 +10,8 @@ public class Peca {
 	public Peca() {
 		
 	}
+	
+	
 	public String getDescricao() {
 		return descricao;
 	}
