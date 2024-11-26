@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Acessorio extends Peca implements Item {
 
 	public Acessorio(String descricao, int quantidade, int estoque_min, int estoque_max) {
-		super(descricao, quantidade, estoque_min, estoque_max);
+		super(descricao, quantidade, estoque_min, estoque_max); //construtor que importa os itens do super
 	}
 
 	@Override
