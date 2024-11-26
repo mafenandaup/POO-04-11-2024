@@ -21,4 +21,10 @@ public class RoupaTamanhoUnico extends Peca implements Item {
 			System.out.println("Erro inesperado!: " + e.getMessage());
 		}
 	}
+
+	@Override
+	public String getDescricao() {
+		return descricao;
+	}
+
 }
