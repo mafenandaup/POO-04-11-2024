@@ -11,13 +11,14 @@ public class RoupaPMG implements Item {
 	protected int estoque_min;
 	protected int estoque_max;
 
-	public RoupaPMG(String descricao, int quantidadeP, int quantidadeM, int quantidadeG, int estoqueMinimo,
-			int estoqueMaximo) {
-
-		this.quantidadeP = quantidadeP;
-		this.quantidadeM = quantidadeM;
-		this.quantidadeG = quantidadeG;
-	}
+	   public RoupaPMG(String descricao, int quantidadeP, int quantidadeM, int quantidadeG, int estoque_min, int estoque_max) {
+	        this.descricao = descricao;
+	        this.quantidadeP = quantidadeP;
+	        this.quantidadeM = quantidadeM;
+	        this.quantidadeG = quantidadeG;
+	        this.estoque_min = estoque_min;
+	        this.estoque_max = estoque_max;
+	    }
 	
 	public void Venda() {
 		try {
@@ -51,12 +52,45 @@ public class RoupaPMG implements Item {
                     }
                     break;
                 default:
-                    throw new IllegalArgumentException("Tamanho inválido.");
+                    throw new IllegalArgumentException("Tamanho inválido.Tente Novamente");
             }
         } catch (IllegalArgumentException e) {
             System.out.println("Erro: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Erro inesperado: " + e.getMessage());
+        }
+    }
+
+	@Override
+	public void reposicaoEstoque() {
+		 boolean reposto = false;
+
+	        if (quantidadeP < estoque_min) {
+	            quantidadeP = estoque_max;
+	            reposto = true;
+	        }
+	        if (quantidadeM < estoque_min) {
+	            quantidadeM = estoque_max;//se a quantia for menor que o estoque mínimo, a quantidade é reposta e se torna a quantia máxima de estoque, para evitar erros de compra.
+	            reposto = true;
+	        }
+	        if (quantidadeG < estoque_min) {
+	            quantidadeG = estoque_max;
+	            reposto = true;
+	        }
+
+	        if (reposto) {
+	            System.out.println("Reposição realizada para " + descricao + ": Estoque atualizado.");
+	            System.out.println("P: " + quantidadeP + ", M: " + quantidadeM + ", G: " + quantidadeG);
+	        } else {
+	            System.out.println("Estoque de " + descricao + " não precisa de reposição.");
+	        }
+	}
+
+	@Override
+	public String getDescricao() {
+		return descricao;
+	}
+
+}
+
         }
     }
 
